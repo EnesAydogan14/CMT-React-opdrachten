@@ -1,42 +1,43 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #eef3f8;
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.book-list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.book-image {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-bottom: 2px solid #ddd;
+  transition: transform 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.book:hover .book-image {
+  transform: scale(1.03);
 }
 
-.card {
-  padding: 2em;
+
+
+.book1 {
+  background: linear-gradient(180deg, #ffffff, #f2f8ff);
 }
 
-.read-the-docs {
-  color: #888;
+.book2 {
+  background: linear-gradient(180deg, #ffffff, #fff7ef);
 }
+
+.book3 {
+  background: linear-gradient(180deg, #ffffff, #f5f3ff);
+}
+
+
