@@ -6,7 +6,7 @@ function TodoForm({ onAddTodo }) {
   function handleSubmit(event) {
     event.preventDefault();
     onAddTodo(inputValue);
-    setInputValue(""); 
+    setInputValue("");
   }
 
   function handleChange(event) {
@@ -14,17 +14,25 @@ function TodoForm({ onAddTodo }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Nieuwe To-Do:{" "}
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleChange}
-          placeholder="Typ een taak..."
-        />
+    <form onSubmit={handleSubmit} className="mb-4 flex flex-col gap-2">
+      <label className="text-sm font-medium text-slate-700">
+        Nieuwe To-Do:
       </label>
-      <button type="submit">Toevoegen</button>
+
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleChange}
+        placeholder="Typ een taak..."
+        className="border rounded-lg px-3 py-2 text-sm outline-none focus:ring focus:ring-blue-300"
+      />
+
+      <button
+        type="submit"
+        className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700"
+      >
+        Toevoegen
+      </button>
     </form>
   );
 }
