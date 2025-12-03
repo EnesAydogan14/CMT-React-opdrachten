@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Book = ({ title, description, images }) => {
+const Book = ({ title, description, images, category }) => {
   const [aantalKeerGelezen, setAantalKeerGelezen] = useState(0);
 
   const verhoogTeller = () => {
@@ -13,15 +13,11 @@ const Book = ({ title, description, images }) => {
       <p>{description}</p>
 
       
-      <img
-        className="book-image"
-        src={images}
-        alt={title}
-        onError={(e) => (e.target.src = "/fallback.jpg")}
-      />
+      <p><strong>Categorie:</strong> {category}</p>
+
+      <img className="book-image" src={images} alt={title} />
 
       <button onClick={verhoogTeller}>Verhoog teller</button>
-
       <p>Aantal keer gelezen: {aantalKeerGelezen}</p>
     </section>
   );
