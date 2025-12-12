@@ -1,12 +1,12 @@
-import './App.css'
+import FlashCardList from "./components/FlashCardList";
+import { flashcards } from "./data";
 
 function App() {
-
   return (
-    <>
-      <h1>Opdracht 13 - Flashcard Quiz</h1>
-    </>
-  )
+    <div className="min-h-screen bg-gradient-to-br from-sky-100 via-indigo-50 to-emerald-100 py-10">
+      <FlashCardList cards={flashcards} />
+    </div>
+  );
 }
 
-export default App
+export default App;
