@@ -7,13 +7,15 @@ const MovieList = ({ movies, onDelete }) => {
 
   return (
     <ul>
-      {movies.map((movie, index) => (
-        <MovieItem movie={movie} onDelete={onDelete} />
+      {movies.map((movie) => (
+        <MovieItem
+          key={movie}
+          movie={movie}
+          onDelete={onDelete}
+        />
       ))}
     </ul>
   );
-}
+};
 
 export default MovieList;
-
-
