@@ -1,39 +1,59 @@
 import { useState } from "react";
 
-const Book = ({ title, description, images, category }) => {
+const Book = ({ id, title, author, description, images, category, year, pages }) => {
+  const [liked, setLiked] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
   const [aantalKeerGelezen, setAantalKeerGelezen] = useState(0);
-  const [liked, setLiked] = useState(false); 
 
-  const verhoogTeller = () => {
-    setAantalKeerGelezen((prev) => prev + 1);
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
   };
 
-  const toggleLike = () => {
+  const toggleLike = (e) => {
+    e.stopPropagation();
     setLiked(!liked);
   };
 
+  const verhoogTeller = (e) => {
+    e.stopPropagation();
+    setAantalKeerGelezen((prev) => prev + 1);
+  };
+
   return (
-    <section className="book-container">
-      <h2>{title}</h2>
-      <p>{description}</p>
+    <article
+      className={`book book${id} ${isFlipped ? "flipped" : ""}`}
+      onClick={handleFlip}
+    >
+      <div className="book-inner">
 
-      <p><strong>Categorie:</strong> {category}</p>
+        <div className="book-front">
+          <h2>{title}</h2>
+          <p><strong>Auteur:</strong> {author}</p>
+          <p><strong>Categorie:</strong> {category}</p>
 
-      <img className="book-image" src={images} alt={title} />
+          <img className="book-image" src={images} alt={title} />
 
-      <div className="favorite-section">
-        <button onClick={toggleLike}>
-          {liked ? "❤️" : "🤍"}
-        </button>
+          <div className="favorite-section">
+            <button onClick={toggleLike}>
+              {liked ? "❤️" : "🤍"}
+            </button>
+            {liked && <p className="favorited-text">Toegevoegd aan favorieten</p>}
+          </div>
 
-        {liked && (
-          <p className="favorited-text">Toegevoegd aan favorieten</p>
-        )}
+          <button onClick={verhoogTeller}>Verhoog teller</button>
+          <p>Aantal keer gelezen: {aantalKeerGelezen}</p>
+        </div>
+
+     
+        <div className="book-back">
+          <h2>Details</h2>
+          <p><strong>Publicatiejaar:</strong> {year}</p>
+          <p><strong>Pagina's:</strong> {pages}</p>
+          <p>{description}</p>
+          <p className="back-hint">Klik om terug te gaan</p>
+        </div>
       </div>
-
-      <button onClick={verhoogTeller}>Verhoog teller</button>
-      <p>Aantal keer gelezen: {aantalKeerGelezen}</p>
-    </section>
+    </article>
   );
 };
 
