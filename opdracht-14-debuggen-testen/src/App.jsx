@@ -33,6 +33,7 @@ function App() {
       <MovieList movies={movies} onDelete={deleteMovie} />
     </section>
   );
+  
 }
 
 export default App;
